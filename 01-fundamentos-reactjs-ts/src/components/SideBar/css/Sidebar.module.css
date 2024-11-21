@@ -1,0 +1,59 @@
+.sidebar {
+    background: var(--gray-800); /* Define o fundo do sidebar com um cinza escuro */
+    border-radius: 8px; /* Bordas arredondadas para suavizar as extremidades */
+    overflow: hidden; /* Impede que o conteúdo ultrapasse os limites do sidebar */
+}
+
+.cover {
+    width: 100%; /* Faz a imagem ocupar toda a largura do sidebar */
+    height: 72px; /* Define uma altura fixa para a imagem de capa */
+    object-fit: cover; /* Corta a imagem para caber nas dimensões, mantendo o aspecto */
+}
+
+.profile {
+    display: flex; /* Habilita o Flexbox para alinhar o conteúdo */
+    flex-direction: column; /* Coloca os elementos (avatar, nome, profissão) em uma coluna */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    /* A margem negativa posiciona o avatar para sobrepor a imagem de capa */
+    margin-top: calc(0px - 1.5rem - 6px);
+}
+
+.sidebar footer {
+    border-top: 1px solid var(--gray-600); /* Borda no topo do footer para separar visualmente */
+    margin-top: 1.5rem; /* Adiciona espaço entre o perfil e o footer */
+    padding: 1.5rem 2rem 2rem; /* Espaçamento interno no footer */
+}
+
+.profile strong {
+    margin: 1rem; /* Espaço ao redor do nome do perfil */
+    color: var(--gray-100); /* Cor clara para destacar o nome */
+    line-height: 1.6; /* Define o espaçamento entre linhas */
+}
+
+.profile span {
+    font-size: 0.875rem; /* Tamanho de fonte menor para o cargo */
+    color: var(--gray-400); /* Cinza médio para deixar o cargo mais discreto */
+    line-height: 1.6; /* Define o espaçamento entre linhas */
+}
+
+.sidebar footer a {
+    width: 100%; /* Faz o link ocupar toda a largura do footer */
+    background: transparent; /* Fundo transparente inicialmente */
+    color: var(--green-500); /* Cor verde para o texto */
+    border: 1px solid var(--green-500); /* Borda verde para combinar com o tema */
+    border-radius: 8px; /* Arredonda levemente as bordas do link */
+    height: 50px; /* Altura do botão */
+    padding: 0 1.5rem; /* Espaçamento interno para o texto */
+    font-weight: bold; /* Texto em negrito para dar destaque */
+    text-decoration: none; /* Remove o sublinhado do link */
+    display: flex; /* Habilita o Flexbox */
+    align-items: center; /* Centraliza o texto e o ícone verticalmente */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    gap: 0.5rem; /* Espaçamento entre o ícone e o texto */
+    transition: color 0.1s, background-color 0.1s; /* Transição suave para a cor e o fundo no hover */
+}
+
+.sidebar footer a:hover {
+    background: var(--green-500); /* Muda o fundo para verde no hover */
+    color: var(--white); /* Muda o texto para branco no hover, destacando o botão */
+}

@@ -1,0 +1,92 @@
+/* Container principal para o comentário, espaça os elementos */
+.comment{
+    margin-top: 1.5rem; /* Espaço acima do comentário */
+    display: flex; /* Alinha elementos do comentário em linha */
+    gap: 1rem; /* Espaçamento entre elementos do comentário */
+}
+
+
+/* Caixa que contém o conteúdo do comentário */
+.commentBox{
+    flex: 1; /* Permite que a caixa de comentário ocupe o espaço restante */
+}
+
+/* Caixa interna que contém o texto e o cabeçalho do comentário */
+.commentContent{
+    background: var(--gray-700); /* Fundo cinza escuro */
+    border-radius: 8px; /* Arredonda as bordas da caixa de conteúdo */
+    padding: 1rem; /* Espaço interno da caixa */
+}
+
+/* Cabeçalho do comentário, alinha o autor e o botão de exclusão */
+.commentContent header{
+    display: flex; /* Alinha o cabeçalho em linha */
+    align-items: flex-start; /* Alinha o conteúdo no topo */
+    justify-content: space-between; /* Espaça o autor e o botão de exclusão */
+}
+
+/* Nome do autor e tempo de publicação */
+.authorAndTime strong{
+    display: block; /* Exibe o nome do autor em bloco */
+    font-size: 0.875rem; /* Define o tamanho do texto */
+    line-height: 1.6; /* Espaçamento entre linhas */
+}
+.authorAndTime time{
+    display: block; /* Exibe o tempo em uma nova linha */
+    font-size: 0.75rem; /* Tamanho menor para o tempo */
+    line-height: 1.6; /* Espaçamento entre linhas */
+}
+
+/* Botão de exclusão do comentário */
+.commentContent header button{
+    background: transparent; /* Botão sem fundo */
+    border: 0; /* Remove borda do botão */
+    color: var(--gray-400); /* Cor cinza do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    line-height: 0; /* Ajusta altura do botão */
+    border-radius: 4px; /* Arredonda as bordas do botão */
+}
+
+/* Muda a cor do botão de exclusão ao passar o mouse */
+.commentContent header button:hover{
+    color: var(--red-500); /* Muda para vermelho ao passar o mouse */
+}
+
+/* Parágrafo do conteúdo do comentário */
+.commentContent p{
+    margin-top: 1rem; /* Espaço acima do texto */
+    color: var(--gray-300); /* Cor do texto */
+}
+
+/* Rodapé da caixa de comentário */
+.commentBox footer{
+    margin-top: 1rem; /* Espaço acima do rodapé */
+}
+
+/* Botão de aplauso no rodapé */
+.commentBox footer button{
+    background: transparent; /* Botão sem fundo */
+    border: 0; /* Remove borda do botão */
+    color: var(--gray-400); /* Cor do texto do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+
+    display: flex; /* Alinha o ícone e o texto em linha */
+    align-items: center; /* Centraliza ícone e texto */
+    border-radius: 2px; /* Arredonda levemente as bordas */
+}
+
+/* Muda a cor do botão de aplauso ao passar o mouse */
+.commentBox footer button:hover{
+    color: var(--green-300); /* Muda para verde claro ao passar o mouse */
+}
+
+/* Espaço entre o ícone e o texto no botão */
+.commentBox footer button svg{
+    margin-right: 0.5rem; /* Espaço à direita do ícone */
+}
+
+/* Adiciona ponto separador entre o texto do botão */
+.commentBox footer button span::before{
+    content: "\2022"; /* Adiciona um ponto antes do texto */
+    padding: 0 0.25rem; /* Espaço ao redor do ponto */
+}

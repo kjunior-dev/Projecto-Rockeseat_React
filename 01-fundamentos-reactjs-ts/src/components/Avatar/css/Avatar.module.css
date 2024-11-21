@@ -1,0 +1,14 @@
+.avatar {
+    width: 3rem; /* Define a largura do avatar sem borda */
+    height: 3rem; /* Define a altura do avatar sem borda */
+    border-radius: 8px; /* Arredonda levemente as bordas do avatar */
+}
+
+/* Estilos para o avatar com borda */
+.avatarWithBorder {
+    width: 4rem; /* Define a largura do avatar com borda */
+    height: 4rem; /* Define a altura do avatar com borda */
+    border-radius: 8px; /* Arredonda levemente as bordas do avatar */
+    border: 4px solid var(--gray-800); /* Borda escura ao redor do avatar */
+    outline: 2px solid var(--green-500); /* Outline verde externo ao redor do avatar */
+}

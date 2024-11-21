@@ -1,0 +1,136 @@
+/* Estilos para o contêiner principal do post */
+.post{
+    background: var(--gray-800); /* Define o fundo como cinza escuro */
+    border-radius: 8px; /* Bordas arredondadas para um visual suave */
+    padding: 2.5rem; /* Espaçamento interno generoso para o conteúdo */
+}
+
+/* Adiciona uma margem superior entre posts consecutivos */
+.post + .post{
+    margin-top: 2rem; /* Distância de 2rem entre posts consecutivos */
+}
+
+/* Estilos para o cabeçalho do post */
+.post > header{
+    display: flex; /* Utiliza flexbox para dispor os itens na horizontal */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    justify-content: space-between; /* Espaça os itens entre si */
+}
+
+/* Estilos para o timestamp (data de publicação) dentro do cabeçalho */
+.post > header time{
+    font-size: 0.875rem; /* Tamanho da fonte menor */
+    color: var(--gray-400); /* Cor cinza claro para o texto */
+}
+
+/* Estilos para a área de conteúdo do post */
+.content{
+    line-height: 1.6; /* Espaçamento entre as linhas do texto */
+    color: var(--gray-300); /* Cor do texto mais clara */
+    margin-top: 1.5rem; /* Distância do conteúdo em relação ao cabeçalho */
+}
+
+/* Estilos para o parágrafo dentro do conteúdo do post */
+.content p{
+    margin-top: 1.5rem; /* Distância superior para os parágrafos */
+}
+
+/* Estilos para os links dentro do conteúdo */
+.content a{
+    font-weight: bold; /* Deixa o link em negrito */
+    color: var(--green-500); /* Cor verde para os links */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+}
+
+/* Estilos para o efeito de hover nos links */
+.content a:hover{
+    color: var(--green-300); /* Altera a cor para um verde mais claro ao passar o mouse */
+}
+
+/* Estilos para a seção de informações do autor */
+.author{
+    display: flex; /* Utiliza flexbox para dispor os itens na horizontal */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    gap: 1rem; /* Espaço de 1rem entre os itens */
+}
+
+/* Estilos para o nome e título do autor */
+.authorInfo strong{
+    display: block; /* Faz o nome ocupar toda a linha */
+    color: var(--gray-100); /* Cor do nome do autor em cinza claro */
+    line-height: 1.6; /* Ajusta o espaçamento entre as linhas */
+}
+
+/* Estilos para a profissão ou título do autor */
+.authorInfo span{
+    display: block; /* Faz a profissão ocupar toda a linha */
+    font-size: 0.875rem; /* Tamanho de fonte menor */
+    color: var(--gray-400); /* Cor cinza claro para a profissão */
+    line-height: 1.6; /* Ajusta o espaçamento entre as linhas */
+}
+
+/* Estilos para o formulário de comentários */
+.commentForm{
+    width: 100%; /* Formulário ocupa toda a largura disponível */
+    margin-top: 1.5rem; /* Distância superior em relação ao conteúdo */
+    padding-top: 1.5rem; /* Espaçamento superior no formulário */
+    border-top: 1px solid var(--gray-600); /* Linha separadora no topo do formulário */
+}
+
+/* Estilos para o título do formulário de comentários */
+.commentForm > strog{
+    line-height: 1.6; /* Ajusta o espaçamento entre as linhas */
+    color: var(--gray-100); /* Cor do texto em cinza claro */
+}
+
+/* Estilos para a área de texto do formulário de comentários */
+.commentForm textarea{
+    width: 100%; /* Área de texto ocupa toda a largura disponível */
+    background: var(--gray-900); /* Fundo escuro para a área de texto */
+    border: none; /* Remove a borda padrão */
+    resize: none; /* Impede o redimensionamento da área de texto */
+    height: 6rem; /* Altura fixa para a área de texto */
+    padding: 1rem; /* Espaçamento interno na área de texto */
+    border-radius: 8px; /* Bordas arredondadas */
+    color: var(--gray-100); /* Cor do texto em cinza claro */
+    line-height: 1rem; /* Ajusta o espaçamento entre as linhas do texto */
+    margin-top: 1rem; /* Distância superior em relação ao título do formulário */
+}
+
+/* Estilos para o rodapé do formulário de comentários */
+.commentForm footer{
+    visibility: hidden; /* Esconde o rodapé inicialmente */
+    max-height: 0; /* Garante que o rodapé não ocupe espaço */
+}
+
+/* Quando o formulário de comentários está em foco (com dados preenchidos), o rodapé se torna visível */
+.commentForm:focus-within footer{
+    visibility: visible; /* Torna o rodapé visível */
+    max-height: none; /* Remove a restrição de altura */
+}
+
+/* Estilos para o botão de envio do formulário de comentários */
+.commentForm button[type=submit]{
+    padding: 1rem 1.5rem; /* Espaçamento interno do botão */
+    margin-top: 1rem; /* Distância superior em relação ao restante do formulário */
+    border-radius: 8px; /* Bordas arredondadas para o botão */
+    border: 0; /* Remove a borda padrão do botão */
+    background: var(--green-500); /* Cor de fundo verde para o botão */
+    color: var(--white); /* Cor do texto do botão branca */
+    line-height: bold; /* Texto em negrito */
+    cursor: pointer; /* Altera o cursor para pointer para indicar interatividade */
+    transition: background-color 0.1s; /* Efeito suave na mudança de cor ao passar o mouse */
+}
+
+/* Estilos para o efeito de hover no botão de envio */
+.commentForm button[type=submit]:not(:disabled):hover{
+    background: var(--green-300); /* Altera a cor do botão para um verde mais claro ao passar o mouse */
+}
+
+.commentForm button:disabled{
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.commentList{
+    margin-top: 2rem;
+}
