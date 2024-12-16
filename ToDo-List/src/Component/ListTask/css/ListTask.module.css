@@ -1,0 +1,137 @@
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+}
+
+.details{
+    width: 730px;
+    height: 287px;
+}
+
+.task{
+    border: 1px solid var(--gray-300);
+    border-radius: 8px 8px 0 0;
+    border-color: var(--gray-400) transparent transparent;
+    height: auto;
+    overflow: hidden;
+}
+
+.details .infoTask{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.tasksCompleted{
+    color: var(--purple);
+    display: flex;
+    gap: 0.5rem;
+}
+.tasksCriated{
+    display: flex;
+    gap: 0.5rem;
+    color: var(--blue);
+}
+
+h6{
+    width: auto;
+    height: 1.4rem;
+    font-size: 0.876rem;
+    font-size: 0.876rem;
+    border-radius: 30%;
+    background-color: var(--gray-400);
+    color: var(--gray-100);
+    display: flex;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.notTask{
+    color: var(--gray-300);
+    display: flex;
+    flex-direction: column;;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    font-size: 0.875rem;
+    gap: 2rem;
+}
+
+.TaskDisponibled{
+    background-color: var(--gray-500);
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    justify-content: space-evenly;
+    width: 730px;
+    height: 72px;
+    border-radius: 8px;
+}
+
+.TaskDisponibled + .TaskDisponibled{
+    margin-top: 1rem;
+}
+
+/* Oculta o checkbox padrão */
+.TaskDisponibled input[type="checkbox"] {
+    display: none;
+}
+
+/* Estilo do container do checkbox */
+.TaskDisponibled .CheckboxContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Estilo do círculo (checkbox personalizado) */
+.TaskDisponibled .CustomCheckbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Ícone de certo (✔) oculto inicialmente */
+.TaskDisponibled .CustomCheckbox::after {
+    content: "✓";
+    font-size: 14px;
+    color: white;
+    display: none;
+}
+
+/* Estilo para o estado "checked" */
+.TaskDisponibled input[type="checkbox"]:checked + .CustomCheckbox {
+    background-color: var(--purple);
+    border-color: transparent;
+}
+
+/* Exibe o ícone de certo quando marcado */
+.TaskDisponibled input[type="checkbox"]:checked + .CustomCheckbox::after {
+    display: inline;
+}
+
+.TaskDisponibled p{
+    color: var(--gray-100);
+}
+.TaskDisponibled svg{
+    color: var(--gray-300);
+    cursor: pointer;
+}
+.TaskDisponibled svg:hover{
+    color: var(--danger);
+    cursor: pointer;
+}
+
+.TaskDisponibled .texteChecked{
+    text-decoration: line-through;
+    color: var(--gray-300);
+}

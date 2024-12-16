@@ -1,0 +1,25 @@
+.header{
+    background-color: var(--gray-700);
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header img{
+    width: 30px;
+    height: 40px;
+}
+
+.spanTo{
+    color: var(--blue);
+}
+
+.spanDo{
+    color: var(--purple-dark);
+}
+
+.spanDo, .spanTo{
+    font-size: 3rem;
+}

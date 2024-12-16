@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de457079-19eb-47e0-bfe5-575a6abb394b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/public/ignite-logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/@types/styled.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/Pages/History/History.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/Pages/History/styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/Pages/Home/Home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/Pages/Home/styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/Router.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/components/Header/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/components/Header/styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/global.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/layouts/DefaultLayout/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/layouts/DefaultLayout/styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02-ignite-timer/src/styles/themes/default.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/public/assets/Clipboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/public/assets/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/public/assets/rocket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/src/Component/AddTask/css/Search.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/src/Component/AddTask/search.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/src/Component/Header/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/src/Component/Header/css/Header.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/src/Component/ListTask/ListTask.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/src/Component/ListTask/css/ListTask.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ToDo-List/src/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Projecto-Rockeseat_React.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-fundamentos-reactjs-ts/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/01-fundamentos-reactjs-ts/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/02-ignite-timer/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/eslint.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/02-ignite-timer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/02-ignite-timer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/02-ignite-timer/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/src/components/Button.styles.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-ignite-timer/src/components/Button.tsx" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Kevin199527&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Kevin199527/Projecto-Rockeseat_React.git&quot;,
+    &quot;accountId&quot;: &quot;9fec8009-1a44-4c83-b42a-ccd0e4d4a17e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2pB5KQqXpKNdlfyEaNxj7wIKfHQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/02-ignite-timer/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/02-ignite-timer/public" />
+      <recent name="$PROJECT_DIR$/ToDo-List/public/assets" />
+      <recent name="$PROJECT_DIR$/ToDo-List/src/assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/02-ignite-timer/src/Pages/History" />
+      <recent name="$PROJECT_DIR$/02-ignite-timer/src/Pages/Home" />
+      <recent name="$PROJECT_DIR$/02-ignite-timer/src/components/Header" />
+      <recent name="$PROJECT_DIR$/ToDo-List/public/assets" />
+      <recent name="$PROJECT_DIR$/ToDo-List/public" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Projecto-Rockeseat_React" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Projecto-Rockeseat_React" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de457079-19eb-47e0-bfe5-575a6abb394b" name="Changes" comment="" />
+      <created>1732226564128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732226564128</updated>
+      <workItem from="1732226565223" duration="6000" />
+      <workItem from="1732226845773" duration="4023000" />
+      <workItem from="1732295443472" duration="49000" />
+      <workItem from="1732308768283" duration="6153000" />
+      <workItem from="1732379400628" duration="706000" />
+      <workItem from="1732380112613" duration="2771000" />
+      <workItem from="1732395688658" duration="4070000" />
+      <workItem from="1732403319445" duration="539000" />
+      <workItem from="1732403889117" duration="2073000" />
+      <workItem from="1732480873613" duration="15002000" />
+      <workItem from="1732532865620" duration="3685000" />
+      <workItem from="1732536736573" duration="3289000" />
+      <workItem from="1732568115449" duration="3494000" />
+      <workItem from="1732656619478" duration="3657000" />
+      <workItem from="1732747732496" duration="3922000" />
+      <workItem from="1732752958076" duration="20000" />
+      <workItem from="1732752990191" duration="81000" />
+      <workItem from="1733007560348" duration="2040000" />
+      <workItem from="1733099879573" duration="512000" />
+      <workItem from="1733355608833" duration="1037000" />
+      <workItem from="1733440811324" duration="1234000" />
+      <workItem from="1733480937451" duration="9000" />
+      <workItem from="1733518970455" duration="1204000" />
+      <workItem from="1733584415266" duration="6258000" />
+      <workItem from="1733594616137" duration="3770000" />
+      <workItem from="1733852832203" duration="2114000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
