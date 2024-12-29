@@ -1,123 +1,86 @@
 // Importa os ícones e bibliotecas necessárias
-import { Play } from "@phosphor-icons/react";
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from "react";
-import * as zod from 'zod';
+import {Play, HandPalm} from "@phosphor-icons/react"; // Ícone de play para o botão de iniciar
+import {FormProvider, useForm} from 'react-hook-form'; // Biblioteca para manipulação de formulários
+import {zodResolver} from '@hookform/resolvers/zod'; // Conector entre Zod e react-hook-form
+import * as zod from 'zod'; // Biblioteca para validação de dados
 
-// Importa os estilos para o componente
+// Importa os estilos personalizados do componente
 import {
-    CountdownContainer,
-    FormContainer,
     HomeContainer,
-    MinutesAmountInput,
-    Separator,
     StartCountdownButton,
-    TaskInput
+    StopCountdownButton,
 } from "./styles.ts";
+import {NewCycleForm} from "./components/NewCycleForm";
+import {Countdown} from "./components/Countdown";
+import {useContext} from "react";
+import {CyclesContext} from "../../@types/context/CyclesContext.tsx"; // Estilos para os componentes visuais
 
-/*
-Essa função é um exemplo do que a função register do react-hook-form retorna.
-Ela fornece eventos e propriedades que permitem integrar campos de formulário.
-*///
-
-// Interface para o ciclo, representando uma tarefa com duração
-interface Cycle {
-    id: string; // ID único para cada ciclo
-    task: string; // Nome da tarefa
-    minutesAmount: number; // Duração em minutos
-}
-
-// Define um esquema de validação usando Zod para os dados do formulário
-const newCycleFormValidationSchema = zod.object({
-    task: zod.string().min(1, 'Informe a tarefa'), // Tarefa é obrigatória
-    owner: zod.string().optional(), // Proprietário é opcional
-    minutesAmount: zod.number().min(5).max(60, 'O tempo deve ser entre 5 e 60 minutos'), // Validação de tempo
-})
-
-// Define o tipo dos dados do formulário com base no esquema de validação
+// Cria o tipo NewCycleFormData com base no esquema de validação definido
 type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>;
 
-export function Home() {
-    // Estado local para armazenar os ciclos criados
-    const [cycles, setCycles] = useState<Cycle[]>([]);
-    const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
+// Define o esquema de validação dos dados do formulário utilizando a biblioteca Zod
+const newCycleFormValidationSchema = zod.object({
+    task: zod.string().min(1, 'Informe a tarefa'), // Valida que o campo "task" é uma string e é obrigatório
+    owner: zod.string().optional(), // Campo "owner" é opcional
+    minutesAmount: zod.number()
+        .min(1, 'O tempo mínimo é de 5 minutos') // Valida que o tempo mínimo é 5 minutos
+        .max(60, 'O tempo máximo é de 60 minutos'), // Valida que o tempo máximo é 60 minutos
+});
 
-    // Inicializa o formulário com validação e valores padrão
-    const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
-        resolver: zodResolver(newCycleFormValidationSchema), // Usa o esquema de validação
+// Componente principal da página
+export function Home() {
+
+    const {
+        createNewCycle,
+        activeCycle,
+        interruptCurrentCycle
+    } = useContext(CyclesContext)
+
+    // Configuração do formulário utilizando react-hook-form
+    const newCycleForm  = useForm<NewCycleFormData>({
+        resolver: zodResolver(newCycleFormValidationSchema), // Usa Zod para validação
         defaultValues: {
-            task: '', // Tarefa inicial vazia
-            minutesAmount: 0, // Tempo inicial zero
-            owner: '' // Proprietário inicial vazio
+            task: '', // Valor padrão para o campo "task"
+            minutesAmount: 0, // Valor padrão para o campo "minutesAmount"
+            owner: '' // Valor padrão para o campo "owner"
         }
     });
+    const { handleSubmit, watch, reset } = newCycleForm
 
-    // Função chamada ao enviar o formulário para criar um novo ciclo
-    function handleCreateNewCycle(data: NewCycleFormData) {
-        const id = String(new Date().getTime());
-        const newCycle: Cycle = {
-            id, // Gera um ID único baseado no timestamp
-            task: data.task, // Nome da tarefa
-            minutesAmount: data.minutesAmount, // Duração da tarefa
-        };
-        // O state pega o estado atual do cycle depois copia o estado atual (...state) ou adicionar novo ciclo no final
-        setCycles((state) => [...state, newCycle]); // Atualiza o estado adicionando o novo ciclo à lista existente
-        setActiveCycleId(id);
-
-        reset(); // Reseta o formulário após o envio
+    function handleCreateNewCycle(data: NewCycleFormData){
+        createNewCycle(data)
+        reset(); // Reseta os valores do formulário para os valores padrão
     }
 
-    const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
-
-    // Observa o campo "task" para habilitar/desabilitar o botão de submit
+    // Observa o valor do campo "task" para habilitar ou desabilitar o botão de submit
     const task = watch('task');
     const isSubmitDisable = !task; // Desabilita o botão se "task" estiver vazio
 
+    /*
+    * Prop Drilling --> Quando a gente tem muitas propriedades apenas para comunicaçao entre componentes
+    * Context API --> Permite compartilhar informaçao entre varios componentes ao mesmo tempo
+    * *///
     return (
-        <HomeContainer> {/* Container principal da página Home */}
-            <form onSubmit={handleSubmit(handleCreateNewCycle)} action=""> {/* Formulário principal */}
-                <FormContainer> {/* Container do formulário */}
-                    <label htmlFor="task">Vou Trabalhar em</label> {/* Rótulo para a tarefa */}
-                    <TaskInput
-                        type="text"
-                        id="task"
-                        list="task-suggestions" // Conecta com a lista de sugestões
-                        placeholder={"De um nome para o seu projeto"}
-                        {...register('task')} // Registra o campo no react-hook-form
-                    />
+        <HomeContainer> {/* Container principal */}
+            <form onSubmit={handleSubmit(handleCreateNewCycle)}> {/* Formulário para criar um novo ciclo */}
 
-                    <datalist id="task-suggestions"> {/* Sugestões pré-definidas */}
-                        <option value="Projeto 1"></option>
-                        <option value="Projeto 2"></option>
-                        <option value="Projeto 3"></option>
-                        <option value="Projeto 4"></option>
-                    </datalist>
+                <FormProvider {...newCycleForm} >
+                    <NewCycleForm />{/* Componente Formulário para adicionar uma nova tarefa */}
+                </FormProvider>
 
-                    <label htmlFor="minutesAmount">Durante</label> {/* Rótulo para o tempo */}
-                    <MinutesAmountInput
-                        type="number"
-                        id="minutesAmount"
-                        placeholder={"00"}
-                        step={5} // Incrementos de 5 minutos
-                        min={5} // Valor mínimo
-                        max={60} // Valor máximo
-                        {...register('minutesAmount', { valueAsNumber: true })} // Registra o campo e converte para número
-                    />
-                    <span>Minutos.</span> {/* Indica a unidade de tempo */}
-                </FormContainer>
+                <Countdown/> {/* Componente Countdown */}
 
-                <CountdownContainer> {/* Container para o contador regressivo */}
-                    <span>0</span> {/* Primeiro dígito do contador */}
-                    <span>0</span> {/* Segundo dígito do contador */}
-                    <Separator>:</Separator> {/* Separador dos dígitos */}
-                    <span>0</span> {/* Terceiro dígito do contador */}
-                    <span>0</span> {/* Quarto dígito do contador */}
-                </CountdownContainer>
-
-                <StartCountdownButton disabled={isSubmitDisable} type="submit"> {/* Botão de submit */}
-                    <Play size={24}/> Começar {/* Ícone e texto do botão */}
-                </StartCountdownButton>
+                {activeCycle ? (
+                    <StopCountdownButton type="button" onClick={interruptCurrentCycle}> {/* Botão de iniciar o ciclo */}
+                        <HandPalm size={24}/> {/* Ícone de play */}
+                        Interronper
+                    </StopCountdownButton>
+                ) : (
+                    <StartCountdownButton disabled={isSubmitDisable} type="submit"> {/* Botão de iniciar o ciclo */}
+                        <Play size={24}/> {/* Ícone de play */}
+                        Começar
+                    </StartCountdownButton>
+                )}
             </form>
         </HomeContainer>
     );
