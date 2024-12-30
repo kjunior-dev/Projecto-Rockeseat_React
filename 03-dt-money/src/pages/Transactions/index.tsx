@@ -2,14 +2,18 @@ import {Header} from "../../components/Header";
 import {Summary} from "../../components/Summary";
 import {PriceHighlight, TransactionsContainer, TransactionsTable} from "./styles.ts";
 import {SearchFrom} from "./components/SearchFrom";
-import {useContext} from "react";
 import {TransactionsContext} from "../../context/TransactionContext.tsx";
 import {dateFFormatter, priceFormatter} from "../../utils/formatter.ts";
+import {useContextSelector} from "use-context-selector";
 
 
 export function Transactions() {
 
-    const { transactions } = useContext(TransactionsContext)
+    const transactions = useContextSelector(TransactionsContext, (context) => {
+        return context.transactions
+    })
+
+    console.log("Transactions => ", transactions)
 
    /* async function loadTransactions(){
         const response = await fetch("http://localhost:3000/transactions").then(response => response.json());

@@ -26,6 +26,7 @@ export function Summary() {
         }
     )*/// Codigo subistituido por code abaixo
 
+    // useSummary é um hook costimizado
     const summary = useSummary(); // Retorna mesmo dados { income: 1400, outcome: 2300, total: 3700 }
 
     return(

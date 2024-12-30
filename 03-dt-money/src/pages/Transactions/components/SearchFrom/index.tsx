@@ -3,8 +3,28 @@ import {MagnifyingGlass} from "phosphor-react";
 import {useForm} from "react-hook-form";
 import * as zod from 'zod';
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useContext} from "react";
 import {TransactionsContext} from "../../../../context/TransactionContext.tsx";
+import {useContextSelector} from "use-context-selector";
+import {memo} from 'react';
+
+/*
+*  Porque um componente renderiza?
+* <=> Ha 3 Motivos
+* - O primeiro é Hooks Changes => Onde pode acontecer ( Mudança de estado, mudou contexto e reducer mudou... )
+* - O Segundo motivo é Props Changes => ( Mudou Propriédade )
+* - O Terceiro Parent Rerendered ( Componente Pai Renderizou )
+*
+*  <=> Qual o fluxo de renderização?
+* 1. O React recria o HTML da interface daquele componente
+* 2. Compara a versao do HTML recriada com a versao anterior
+* 3. Se mudou alguma. coisa, ele reescreve o HTML na tela
+*
+*  <> Memo <>
+
+* 0. Se Hooks changed, ou Props changed, ai entra o ( deep comparison ) onde faz a comparração...
+* 0.1 Comparando a versao anterior dos hooks e props
+* 0.2 Se mudou algo, ele vai permitir a nova renderização
+*/
 
 const searchFormSchema = zod.object({
     query: zod.string(),
@@ -12,9 +32,13 @@ const searchFormSchema = zod.object({
 
 type SearchFromInputs = zod.infer<typeof searchFormSchema>;
 
-export function SearchFrom() {
+function SearchFromComponente() {
 
-    const { fetchTransactions } = useContext(TransactionsContext)
+    const fetchTransactions = useContextSelector( // useContextSelector mesma coisa com o useContext, so que ele renderiza algo especifico
+        TransactionsContext,
+        (context) => {
+        return context.fetchTransactions
+    })
 
     const {
             register,
@@ -46,3 +70,5 @@ export function SearchFrom() {
         </SearchFromContainer>
     )
 }
+
+export const SearchFrom = memo(SearchFromComponente)

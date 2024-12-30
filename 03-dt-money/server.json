@@ -23,15 +23,8 @@
       "category": "Alimentação",
       "price": 1100,
       "createdAt": "2024-12-27T22:18:19.275Z"
-    },
-    {
-      "description": "Develop Site",
-      "type": "income",
-      "price": 123004,
-      "category": "Web",
-      "createdAt": "2024-12-29T15:40:25.996Z",
-      "id": 4
     }
+
   ],
   "user": [
     {

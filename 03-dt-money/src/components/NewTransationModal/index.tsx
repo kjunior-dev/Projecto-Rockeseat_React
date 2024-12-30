@@ -4,7 +4,8 @@ import {ArrowCircleDown, ArrowCircleUp, X} from "phosphor-react";
 import * as zod from 'zod';
 import {Controller, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {api} from "../../lib/axios.ts";
+import {TransactionsContext} from "../../context/TransactionContext.tsx";
+import {useContextSelector} from "use-context-selector";
 
 const newTransationModalFormSchema = zod.object({
     description: zod.string(),
@@ -17,7 +18,19 @@ type NewTransationFromInputs = zod.infer<typeof newTransationModalFormSchema>;
 
 export function NewTransationModal() {
 
-    const { control, register, handleSubmit, formState: {isSubmitting} } = useForm<NewTransationFromInputs>({
+    const createTransactions = useContextSelector(
+        TransactionsContext,
+        (context) => {
+        return context.createTransactions
+    });
+
+    const {
+        control,
+        register,
+        handleSubmit,
+        formState: {isSubmitting},
+        reset
+    } = useForm<NewTransationFromInputs>({
         resolver: zodResolver(newTransationModalFormSchema),
         defaultValues:{
             type: 'income',
@@ -27,16 +40,9 @@ export function NewTransationModal() {
     // Registrando dados com o api configurado com a axios usado o metodo post.
     async function handleCreatNewTransaction(data: NewTransationFromInputs){
 
-        const { description, type, price, category } = data; // Distriturando do dentro do data os campos que vao ser salvo.
-
         try {
-           const data = await api.post('/transactions', { // Gravando dados no server.json usando api e o metodo post
-                description,
-                type,
-                price,
-                category,
-               createdAt: new Date(),
-            })
+           await createTransactions(data) // Gravando dados no server.json usando api e o metodo post atravez dessa funçao
+            reset();
 
             console.log("Sucessfully created transaction", data)
         }catch (error) {
