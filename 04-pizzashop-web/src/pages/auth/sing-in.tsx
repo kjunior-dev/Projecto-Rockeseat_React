@@ -8,7 +8,9 @@ import {useForm} from "react-hook-form";
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {toast} from 'sonner'
-import {Link} from 'react-router-dom'
+import {Link, useSearchParams} from 'react-router-dom'
+import {useMutation} from "@tanstack/react-query";
+import {singIn} from "../../api/sing-in.ts";
 
 const singInForm = z.object({
     email: z.string().email(),
@@ -17,19 +19,31 @@ const singInForm = z.object({
 type SingInForm = z.infer<typeof singInForm>
 
 export function SingIn() {
+    const [searchParams] = useSearchParams()
 
-    const {register, handleSubmit, formState: {isSubmitting}} = useForm<SingInForm>({
-        resolver: zodResolver(singInForm)
+    const {
+        register,
+        handleSubmit,
+        formState: {isSubmitting}
+    } = useForm<SingInForm>({
+        resolver: zodResolver(singInForm),
+        defaultValues: {
+            email: searchParams.get('email') ?? ''
+        }
     })
 
-    async function handleSingIng(data: SingInForm) {
-        console.log(data)
-        await new Promise((resolve) => setTimeout(resolve, 2000))
+    const { mutateAsync: authenticate } = useMutation({
+        mutationFn: singIn,
+    })
 
-        toast.success('Enviamos um link autenticação para seu email.', {
+    async function handleSingIn(data: SingInForm) {
+
+        await authenticate({email: data.email});
+
+        toast.success('Enviamos um link autenticação para seu email.',{
             action: {
                 label: 'Reenviar',
-                onClick: () => handleSingIng(data),
+                onClick: () => handleSingIn(data),
             }
         })
     }
@@ -49,7 +63,7 @@ export function SingIn() {
                         <p className="text-sm text-muted-foreground">Acompanha suas vnedas pelo painel do parceiro!</p>
                     </div>
 
-                    <form action="" className="space-y-2" onSubmit={handleSubmit(handleSingIng)}>
+                    <form action="" className="space-y-2" onSubmit={handleSubmit(handleSingIn)}>
                         <div className="space-y-2">
                             <Label htmlFor="email"> Seu e-mail</Label>
                             <Input

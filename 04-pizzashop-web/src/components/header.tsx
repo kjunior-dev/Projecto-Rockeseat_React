@@ -8,7 +8,11 @@ export function Header(){
     return(
         <div className="border-b">
             <div className="flex h-16 items-center gap-6 px-6">
-                <Pizza className="h-6 w-6"/>
+                 <div className="flex gap-2">
+                     <Pizza className="h-6 w-6"/>
+                     <span className="text-rose-900 dark:text-rose-500">Pizza</span>
+                     <span className="text-black dark:text-white">Shop</span>
+                 </div>
 
                 <Separator orientation="vertical" className="h-6"/>
 
