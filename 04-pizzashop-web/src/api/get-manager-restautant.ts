@@ -1,6 +1,6 @@
 import {api} from "../lib/axios.ts";
 
-interface GetManagerRestautantResponse {
+export interface GetManagerRestautantResponse {
     id: string
     name: string
     createdAt: Date | null
