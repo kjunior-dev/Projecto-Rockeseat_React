@@ -6,16 +6,9 @@ import {
     ResponsiveContainer,
 } from "recharts";
 import colors from "tailwindcss/colors";
-import {BarChart} from "lucide-react";
-
-const data = [
-    { product: 'Pepperoni', amount: 40 },
-    { product: 'Mussarel', amount: 35 },
-    { product: 'Marguerita', amount: 18 },
-    { product: '4 Queijos', amount: 25 },
-    { product: 'Frango Frito', amount: 45 },
-]
-
+import {BarChart, Loader2} from "lucide-react";
+import {useQuery} from "@tanstack/react-query";
+import {getPopularProducts} from "../../../api/get-popular-products.ts";
 const COLORS = [
     colors.sky['500'],
     colors.amber['500'],
@@ -25,6 +18,12 @@ const COLORS = [
 ]
 
 export function PopularProdutChart(){
+
+    const { data: productsPopular} = useQuery({
+        queryFn: getPopularProducts,
+        queryKey: ['metrics', 'popular-products'],
+    })
+
     return(
         <Card className="col-span-3">
             <CardHeader className="pb-8">
@@ -35,54 +34,62 @@ export function PopularProdutChart(){
             </CardHeader>
 
             <CardContent>
-                <ResponsiveContainer width={"100%"} height={240}>
-                    <PieChart data={data} style={{fontSize: 12}}>
-                        <Pie
-                            data={data}
-                            dataKey="amount"
-                            nameKey="product"
-                            cx="50%"
-                            cy="50%"
-                            outerRadius={86}
-                            innerRadius={64}
-                            strokeWidth={8}
-                            labelLine={false}
-                            label={({
-                                        cx,
-                                        cy,
-                                        midAngle,
-                                        innerRadius,
-                                        outerRadius,
-                                        value,
-                                        index,
-                                    }) => {
-                                const RADIAN = Math.PI / 180
-                                const radius = 12 + innerRadius + (outerRadius - innerRadius)
-                                const x = cx + radius * Math.cos(-midAngle * RADIAN)
-                                const y = cy + radius * Math.sin(-midAngle * RADIAN)
+                {
+                    productsPopular ? (
+                        <ResponsiveContainer width={"100%"} height={240}>
+                            <PieChart style={{fontSize: 12}}>
+                                <Pie
+                                    data={productsPopular}
+                                    dataKey="amount"
+                                    nameKey="product"
+                                    cx="50%"
+                                    cy="50%"
+                                    outerRadius={86}
+                                    innerRadius={64}
+                                    strokeWidth={8}
+                                    labelLine={false}
+                                    label={({
+                                            cx,
+                                            cy,
+                                            midAngle,
+                                            innerRadius,
+                                            outerRadius,
+                                            value,
+                                            index,
+                                        }) => {
+                                        const RADIAN = Math.PI / 180
+                                        const radius = 12 + innerRadius + (outerRadius - innerRadius)
+                                        const x = cx + radius * Math.cos(-midAngle * RADIAN)
+                                        const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
-                                return (
-                                    <text
-                                        x={x}
-                                        y={y}
-                                        className="fill-muted-foreground text-xs"
-                                        textAnchor={x > cx ? 'start' : 'end'}
-                                        dominantBaseline="central"
-                                    >
-                                        {data[index].product.length > 12
-                                            ? data[index].product.substring(0, 12).concat('...')
-                                            : data[index].product}{' '}
-                                        ({value})
-                                    </text>
-                                )
-                            }}
-                        >
-                            {data.map((_, index) => (
-                                <Cell key={`cell-${index}`} fill={COLORS[index]} className="stroke-background hover:opacity-80"/>
-                            ))}
-                        </Pie>
-                    </PieChart>
-                </ResponsiveContainer>
+                                        return (
+                                            <text
+                                                x={x}
+                                                y={y}
+                                                className="fill-muted-foreground text-xs"
+                                                textAnchor={x > cx ? 'start' : 'end'}
+                                                dominantBaseline="central"
+                                            >
+                                                {productsPopular[index].product.length > 12
+                                                    ? productsPopular[index].product.substring(0, 12).concat('...')
+                                                    : productsPopular[index].product}{' '}
+                                                ({value})
+                                            </text>
+                                        )
+                                    }}
+                                >
+                                    {productsPopular.map((_, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS[index]} className="stroke-background hover:opacity-80"/>
+                                    ))}
+                                </Pie>
+                            </PieChart>
+                        </ResponsiveContainer>
+                    ) : (
+                        <div className="flex h-[240px] w-full items-center justify-center">
+                            <Loader2 className="h-8 w-8 text-muted-foreground animate-spin"/>
+                        </div>
+                    )
+                }
             </CardContent>
         </Card>
     )

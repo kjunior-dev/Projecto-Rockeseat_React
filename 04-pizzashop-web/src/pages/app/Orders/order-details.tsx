@@ -12,6 +12,8 @@ import {getOrderDetails} from "../../../api/get-order-details.ts";
 import {useQuery} from "@tanstack/react-query";
 import {formatDistanceToNow} from "date-fns";
 import {ptBR} from "date-fns/locale";
+import {OrderStatus} from "../../../components/order-status.tsx";
+import {OrderDetailSkeleton} from "./order-detail-skeleton.tsx";
 
 interface OrderDetailsProps {
     orderId: string;
@@ -38,17 +40,14 @@ export function OrderDetails({
                     <DialogDescription>Detalhes do Pedido</DialogDescription>
                 </DialogHeader>
 
-                {order && (
+                {order ? (
                     <div className="space-y-6">
                         <Table>
                             <TableBody>
                                 <TableRow>
                                     <TableCell className="text-muted-foreground"> Status </TableCell>
                                     <TableCell className="flex justify-end">
-                                        <div className="flex items-center gap-2">
-                                            <span className="h-2 w-2 rounded-full bg-slate-400"></span>
-                                            <span className="font-medium text-muted-foreground">{order?.status}</span>
-                                        </div>
+                                        <OrderStatus status={order.status}/>
                                     </TableCell>
                                 </TableRow>
 
@@ -84,7 +83,6 @@ export function OrderDetails({
                                 </TableRow>
                             </TableBody>
                         </Table>
-
 
                         <Table>
                             <TableHeader>
@@ -128,6 +126,8 @@ export function OrderDetails({
                             </TableFooter>
                         </Table>
                     </div>
+                ) : (
+                    <OrderDetailSkeleton/>
                 )}
             </DialogContent>
         </div>

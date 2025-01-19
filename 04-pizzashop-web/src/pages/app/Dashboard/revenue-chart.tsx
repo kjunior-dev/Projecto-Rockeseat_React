@@ -10,48 +10,105 @@ import {
     LineChart,
     XAxis,
     YAxis,
-    Line, CartesianGrid,
+    Line, CartesianGrid, Tooltip,
 } from "recharts"
 
 import colors from 'tailwindcss/colors'
+import {useQuery} from "@tanstack/react-query";
+import {getDailyRevenueInPeriod} from "../../../api/get-daily-revenue-in-period.ts";
+import {Label} from "../../../components/ui/label.tsx";
+import {DateRangerPicker} from "../../../components/ui/date-renger-picker.tsx";
+import {useMemo, useState} from "react";
+import {DateRange} from "react-day-picker";
+import {subDays} from 'date-fns';
+import {Loader2} from "lucide-react";
 
-const data = [
-    { date: '10/12', revenue: 1200 },
-    { date: '05/12', revenue: 300 },
-    { date: '10/01', revenue: 230 },
-    { date: '20/01', revenue: 129 },
-    { date: '26/01', revenue: 456 },
-    { date: '10/02', revenue: 500 },
-    { date: '17/02', revenue: 250 },
-]
 export function RevenueChart(){
-    return(
+
+    const [dateRange, setDateRange] = useState<DateRange | undefined>({
+        from: subDays(new Date(), 7),
+        to: new Date(),
+    });
+
+    const { data: dailyRevenueInPeriod } = useQuery({
+        queryFn: () => getDailyRevenueInPeriod({
+            from: dateRange?.from,
+            to: dateRange?.to
+        }),
+        queryKey: ['metrics', 'daily-revenue-in-period', dateRange],
+    })
+
+    const chartData = useMemo(() => {
+        return dailyRevenueInPeriod?.map((chartItem) => {
+            return {
+                date: chartItem.date,
+                receipt: chartItem.receipt / 100,
+            }
+        })
+    }, [dailyRevenueInPeriod])
+
+     return(
         <Card className="col-span-6">
             <CardHeader className="flex-row items-center justify-between pb-8">
                 <div className="space-y-1">
                     <CardTitle className="text-base font-medium">Receita no periodo</CardTitle>
                     <CardDescription> Receita diaria no periodo </CardDescription>
                 </div>
+
+                <div className="flex items-center gap-3">
+                    <Label>Periodo</Label>
+                    <DateRangerPicker
+                        date={dateRange}
+                        onDateChange={setDateRange}
+                    />
+                </div>
             </CardHeader>
 
             <CardContent>
-                <ResponsiveContainer width={"100%"} height={240}>
-                    <LineChart data={data} style={{fontSize: 12}}>
+                {chartData ? (
+                    <ResponsiveContainer width={"100%"} height={240}>
+                        <LineChart data={chartData} style={{fontSize: 12}}>
 
-                        <CartesianGrid vertical={false} strokeDasharray="3 3" className="text-black dark:stroke-muted"/>
+                            <CartesianGrid
+                                vertical={false}
+                                strokeDasharray="3 3"
+                                className="text-black dark:stroke-muted"
+                            />
 
-                        <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
+                            <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
 
-                        <YAxis stroke="#888" axisLine={false} tickLine={false} width={60}
-                            tickFormatter={(value: number) => value.toLocaleString('pt-CV', {
-                                style: 'currency',
-                                currency: 'CVE'
-                            })}/>
+                            <YAxis stroke="#888" axisLine={false} tickLine={false} width={60}
+                                   tickFormatter={(value: number) => value.toLocaleString('pt-CV', {
+                                       style: 'currency',
+                                       currency: 'CVE'
+                                   })}
+                            />
 
-                        <Line type="linear" strokeWidth={2} dataKey="revenue" stroke={colors.violet['500']}/>
-                    </LineChart>
-                </ResponsiveContainer>
+                            <Line
+                                type="linear"
+                                strokeWidth={2}
+                                dataKey="receipt"
+                                name={"Receita"}
+                                stroke={colors.violet['500']}
+                            />
+
+                            <Tooltip
+                                labelClassName="text-[#888]"
+                                formatter={(value) =>
+                                    Number(value).toLocaleString('pt-BR', {
+                                        style: 'currency',
+                                        currency: 'BRL',
+                                    })
+                                }
+                            />
+                        </LineChart>
+                    </ResponsiveContainer>
+                ) : (
+                    <div className="flex h-[240px] w-full items-center justify-center">
+                        <Loader2 className="h-8 w-8 text-muted-foreground animate-spin"/>
+                    </div>
+                )}
             </CardContent>
         </Card>
-    )
+     )
 }

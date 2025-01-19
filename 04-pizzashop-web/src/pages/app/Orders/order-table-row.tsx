@@ -3,13 +3,16 @@ import {Button} from "../../../components/ui/button.tsx";
 import {ArrowRight, Search, X} from "lucide-react";
 import {Dialog, DialogTrigger} from "../../../components/ui/dialog.tsx";
 import {OrderDetails} from "./order-details.tsx";
-import {OrderStatus} from "../../../components/ui/order-status.tsx";
+import {OrderStatus} from "../../../components/order-status.tsx";
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale'
 import {useState} from "react";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {cancelOrder} from "../../../api/cancel-order.ts";
 import {GetOrdersResponse} from "../../../api/getOrders.ts";
+import {approveOrder} from "../../../api/approved-order.ts";
+import {deliverOrder} from "../../../api/deliver-order.ts";
+import {dispatchOrder} from "../../../api/dispatch-order.ts";
 export interface OrderTableRowProps{
     orders: {
         orderId: string
@@ -25,29 +28,54 @@ export function OrderTableRow({orders}: OrderTableRowProps) {
 
     const queryClient = useQueryClient();
 
-    const { mutateAsync: cancelOrderFn} = useMutation({
-        mutationFn: cancelOrder,
-        onSuccess: (_, {orderId}) => {
-            const orderListCache = queryClient.getQueriesData<GetOrdersResponse>({
-                queryKey: ['orders'],
-            })
+    function updateOrderStatusOnCache(orderId: string, status: OrderStatus){
+        const orderListCache = queryClient.getQueriesData<GetOrdersResponse>({
+            queryKey: ['orders'],
+        })
 
-            orderListCache.forEach(([cacheKey, cacheData]) => {
-                if (!cacheData){
-                    return
-                }
+        orderListCache.forEach(([cacheKey, cacheData]) => {
+            if (!cacheData){
+                return
+            }
 
-                queryClient.setQueryData<GetOrdersResponse>(cacheKey, {
-                    ...cacheData,
-                    orders: cacheData.orders.map(order => {
-                        if (order.orderId === orderId){
-                            return { ...order, status: 'canceled' }
-                        }else {
-                            return order
-                        }
-                    })
+            queryClient.setQueryData<GetOrdersResponse>(cacheKey, {
+                ...cacheData,
+                orders: cacheData.orders.map(order => {
+                    if (order.orderId === orderId){
+                        return { ...order, status }
+                    }else {
+                        return order
+                    }
                 })
             })
+        })
+    }
+
+    const { mutateAsync: cancelOrderFn, isPending: isCancelingOrder } = useMutation({
+        mutationFn: cancelOrder,
+        onSuccess: (_, {orderId}) => {
+            updateOrderStatusOnCache(orderId, 'canceled');
+        }
+    })
+
+    const { mutateAsync: approvedOrderFn, isPending: isApprovingOrder } = useMutation({
+        mutationFn: approveOrder,
+        onSuccess: (_, {orderId}) => {
+            updateOrderStatusOnCache(orderId, 'processing');
+        }
+    })
+
+    const { mutateAsync: dispatchOrderFn, isPending: isDispatchingOrder } = useMutation({
+        mutationFn: dispatchOrder,
+        onSuccess: (_, {orderId}) => {
+            updateOrderStatusOnCache(orderId, 'delivering');
+        }
+    })
+
+    const { mutateAsync: deliverOrderFn, isPending: isDeliveringOrder } = useMutation({
+        mutationFn: deliverOrder,
+        onSuccess: (_, {orderId}) => {
+            updateOrderStatusOnCache(orderId, 'delivered');
         }
     })
 
@@ -92,15 +120,49 @@ export function OrderTableRow({orders}: OrderTableRowProps) {
             </TableCell>
 
             <TableCell>
-                <Button className="text-green-500 bg-transparent" variant="default" size="xs">
-                    <ArrowRight className="mr-2 h-3 w-3 text-green-500"/>
-                    Aprovar
-                </Button>
+                {orders.status === 'pending' && (
+                    <Button
+                        onClick={() => approvedOrderFn({ orderId: orders.orderId })}
+                        className="text-green-500 bg-transparent"
+                        variant="default"
+                        size="xs"
+                        disabled={isApprovingOrder}
+                    >
+                        <ArrowRight className="mr-2 h-3 w-3 text-green-500"/>
+                        Aprovar
+                    </Button>
+                )}
+
+                {orders.status === 'processing' && (
+                    <Button
+                        onClick={() => dispatchOrderFn({ orderId: orders.orderId })}
+                        className="text-green-500 bg-transparent"
+                        variant="default"
+                        size="xs"
+                        disabled={isDispatchingOrder}
+                    >
+                        <ArrowRight className="mr-2 h-3 w-3 text-green-500"/>
+                        Em entrega
+                    </Button>
+                )}
+
+                {orders.status === 'delivering' && (
+                    <Button
+                        onClick={() => deliverOrderFn({ orderId: orders.orderId })}
+                        className="text-green-500 bg-transparent"
+                        variant="default"
+                        size="xs"
+                        disabled={isDeliveringOrder}
+                    >
+                        <ArrowRight className="mr-2 h-3 w-3 text-green-500"/>
+                        Entregue
+                    </Button>
+                )}
             </TableCell>
 
             <TableCell>
                 <Button
-                    disabled={!['pending', 'processing'].includes(orders.status)}
+                    disabled={!['pending', 'processing'].includes(orders.status) || isCancelingOrder}
                     onClick={() => cancelOrderFn({ orderId: orders.orderId })}
                     className="text-rose-700 bg-transparent" variant="default" size="xs">
                     <X className="mr-2 h-3 w-3 text-rose-700"/>

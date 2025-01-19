@@ -7,6 +7,7 @@ import {RevenueChart} from "./revenue-chart.tsx";
 import {PopularProdutChart} from "./popular-produt-chart.tsx";
 
 export function Dashboard(){
+
     return(
         <>
             <Helmet title="Dashboard"/>

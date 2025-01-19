@@ -5,13 +5,15 @@ import {SingIn} from "./pages/auth/sing-in.tsx";
 import {AuthLayout} from "./pages/_layouts/auth.tsx";
 import {SingUp} from "./pages/auth/sing-Up.tsx";
 import {Orders} from "./pages/app/Orders/orders.tsx";
-import {NotFount} from "./pages/notFount.tsx";
+import {Error} from "./pages/error.tsx";
+import {NotFount} from "./pages/404.tsx";
 
 export const router = createBrowserRouter([
 
         {
-            path: '/', element: <AppLayout/>,
-            errorElement: <NotFount/>,
+            path: '/',
+            element: <AppLayout/>,
+            errorElement: <Error/>,
             children: [
                 {path: "/", element: <Dashboard/>},
                 {path: "/orders", element: <Orders/>},
@@ -19,11 +21,16 @@ export const router = createBrowserRouter([
         },
 
         {
-            path: '/', element: <AuthLayout/>,
+            path: '/',
+            element: <AuthLayout/>,
             children: [
                 {path: "/sing-in", element: <SingIn/>},
                 {path: "/sing-up", element: <SingUp/>},
             ],
         },
+
+        {
+            path: '*', element: <NotFount/>
+        }
     ],
 )
