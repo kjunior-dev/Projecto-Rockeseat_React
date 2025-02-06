@@ -13,7 +13,10 @@ export function Pagination({
    totalCount,
    onPageChange
 } : PaginationProps){
-    const pages = Math.ceil(totalCount / perPage) || 1;
+
+    // Calcula o número total de páginas, arredondando para cima
+    const pages = Math.ceil(totalCount / perPage) || 1; // Exemplo: Math.ceil(200 / 10) = Math.ceil(20) = 20
+
     return(
         <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">
@@ -22,6 +25,7 @@ export function Pagination({
 
             <div className="flex items-center gap-4 lg:gap-8">
                 <div className="text-sm font-medium">
+                    {/* Exibe a página atual (começando de 1) e o total de páginas */}
                     Pagina {pageIndex + 1} de {pages}
                 </div>
 
