@@ -1,5 +1,5 @@
 {
-  "name": "@ignite-ui/docs",
+  "name": "docs",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,9 +12,6 @@
     "build": "storybook build"
   },
   "dependencies": {
-    "@ignite-ui/react": "*",
-    "@ignite-ui/tokens": "*",
-    "@ignite-ui/eslint-config": "*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

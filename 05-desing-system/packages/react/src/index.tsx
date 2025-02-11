@@ -27,6 +27,7 @@ export const Button = styled('button', {
     defaultVariants: {
         size: 'small',
     },
+
 })
 
 export type ButtonProps = ComponentProps<typeof Button>
