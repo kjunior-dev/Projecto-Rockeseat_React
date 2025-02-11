@@ -11,7 +11,6 @@ export const Button = styled('button', {
     color: '$white',
 
     variants: {
-
         size: {
             small: {
                 fontSize: 14,
@@ -23,7 +22,6 @@ export const Button = styled('button', {
                 padding: '$3 $6',
             },
         },
-
     },
 
     defaultVariants: {
