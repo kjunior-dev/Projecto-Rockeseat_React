@@ -1,8 +1,6 @@
+import { ComponentProps } from 'react';
 import { styled } from './styles'
 
-export type ButtonProps = {
-    size: 'small' | 'big'
-}
 export const Button = styled('button', {
     fontFamily: '$default',
     backgroundColor: '$ignite300',
@@ -32,3 +30,5 @@ export const Button = styled('button', {
         size: 'small',
     },
 })
+
+export type ButtonProps = ComponentProps<typeof Button>

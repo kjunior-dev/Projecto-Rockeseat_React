@@ -1,6 +1,4 @@
-export type ButtonProps = {
-    size: 'small' | 'big';
-};
+import { ComponentProps } from 'react';
 export declare const Button: import("@stitches/react/types/styled-component").StyledComponent<"button", {
     size?: "big" | "small" | undefined;
 }, {}, import("@stitches/react/types/css-util").CSS<{}, {
@@ -205,4 +203,5 @@ export declare const Button: import("@stitches/react/types/styled-component").St
     transition: "transitions";
     zIndex: "zIndices";
 }, {}>>;
+export type ButtonProps = ComponentProps<typeof Button>;
 //# sourceMappingURL=index.d.ts.map
