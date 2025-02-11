@@ -121,15 +121,30 @@ var {
 });
 
 // src/index.tsx
-import * as React from "react";
 var Button = styled("button", {
   fontFamily: "$default",
-  backgroundColor: "$ignite500",
-  borderRadius: "$md"
+  backgroundColor: "$ignite300",
+  borderRadius: "$sm",
+  padding: "$2 $4",
+  border: 0,
+  fontWeight: "$bold",
+  color: "$white",
+  variants: {
+    size: {
+      small: {
+        fontSize: 14,
+        padding: "$2 $4"
+      },
+      big: {
+        fontSize: 16,
+        padding: "$3 $6"
+      }
+    }
+  },
+  defaultVariants: {
+    size: "small"
+  }
 });
-function App() {
-  return /* @__PURE__ */ React.createElement(Button, null, "Hello Word");
-}
 export {
-  App
+  Button
 };

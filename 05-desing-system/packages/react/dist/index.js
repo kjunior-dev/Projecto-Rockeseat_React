@@ -1,12 +1,10 @@
 "use strict";
-var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
@@ -34,20 +32,12 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.tsx
 var index_exports = {};
 __export(index_exports, {
-  App: () => App
+  Button: () => Button
 });
 module.exports = __toCommonJS(index_exports);
 
@@ -154,16 +144,31 @@ var {
 });
 
 // src/index.tsx
-var React = __toESM(require("react"));
 var Button = styled("button", {
   fontFamily: "$default",
-  backgroundColor: "$ignite500",
-  borderRadius: "$md"
+  backgroundColor: "$ignite300",
+  borderRadius: "$sm",
+  padding: "$2 $4",
+  border: 0,
+  fontWeight: "$bold",
+  color: "$white",
+  variants: {
+    size: {
+      small: {
+        fontSize: 14,
+        padding: "$2 $4"
+      },
+      big: {
+        fontSize: 16,
+        padding: "$3 $6"
+      }
+    }
+  },
+  defaultVariants: {
+    size: "small"
+  }
 });
-function App() {
-  return /* @__PURE__ */ React.createElement(Button, null, "Hello Word");
-}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  App
+  Button
 });
