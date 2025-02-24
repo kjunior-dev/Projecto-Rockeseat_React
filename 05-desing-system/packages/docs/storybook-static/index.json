@@ -1,1 +1,133 @@
-{"v":5,"entries":{"home--docs":{"id":"home--docs","title":"Home","name":"Docs","importPath":"./src/stories/pages/home.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"tokens-colors--docs":{"id":"tokens-colors--docs","title":"Tokens/Colors","name":"Docs","importPath":"./src/stories/pages/tokens/colors.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"tokens-font-sizes--docs":{"id":"tokens-font-sizes--docs","title":"Tokens/Font Sizes","name":"Docs","importPath":"./src/stories/pages/tokens/font-size.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"tokens-font-weights--docs":{"id":"tokens-font-weights--docs","title":"Tokens/Font Weights","name":"Docs","importPath":"./src/stories/pages/tokens/font-weights.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"tokens-font-families--docs":{"id":"tokens-font-families--docs","title":"Tokens/Font Families","name":"Docs","importPath":"./src/stories/pages/tokens/fonts.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"tokens-line-heights--docs":{"id":"tokens-line-heights--docs","title":"Tokens/Line Heights","name":"Docs","importPath":"./src/stories/pages/tokens/line-height.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"tokens-radii--docs":{"id":"tokens-radii--docs","title":"Tokens/Radii","name":"Docs","importPath":"./src/stories/pages/tokens/raddi.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"tokens-space--docs":{"id":"tokens-space--docs","title":"Tokens/Space","name":"Docs","importPath":"./src/stories/pages/tokens/space.mdx","storiesImports":[],"type":"docs","tags":["dev","test","unattached-mdx"]},"form-button--primary":{"type":"story","id":"form-button--primary","name":"Primary","title":"Form/Button","importPath":"./src/stories/Button.stories.ts","componentPath":"@ignite-ui/react","tags":["dev","test"]},"form-button--big":{"type":"story","id":"form-button--big","name":"Big","title":"Form/Button","importPath":"./src/stories/Button.stories.ts","componentPath":"@ignite-ui/react","tags":["dev","test"]}}}
+{
+  "v": 5,
+  "entries": {
+    "home--docs": {
+      "id": "home--docs",
+      "title": "Home",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/home.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "tokens-colors--docs": {
+      "id": "tokens-colors--docs",
+      "title": "Tokens/Colors",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/tokens/colors.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "tokens-font-sizes--docs": {
+      "id": "tokens-font-sizes--docs",
+      "title": "Tokens/Font Sizes",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/tokens/font-size.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "tokens-font-weights--docs": {
+      "id": "tokens-font-weights--docs",
+      "title": "Tokens/Font Weights",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/tokens/font-weights.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "tokens-font-families--docs": {
+      "id": "tokens-font-families--docs",
+      "title": "Tokens/Font Families",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/tokens/fonts.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "tokens-line-heights--docs": {
+      "id": "tokens-line-heights--docs",
+      "title": "Tokens/Line Heights",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/tokens/line-height.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "tokens-radii--docs": {
+      "id": "tokens-radii--docs",
+      "title": "Tokens/Radii",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/tokens/raddi.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "tokens-space--docs": {
+      "id": "tokens-space--docs",
+      "title": "Tokens/Space",
+      "name": "Docs",
+      "importPath": "./src/stories/pages/tokens/space.mdx",
+      "storiesImports": [],
+      "type": "docs",
+      "tags": [
+        "dev",
+        "test",
+        "unattached-mdx"
+      ]
+    },
+    "form-button--primary": {
+      "type": "story",
+      "id": "form-button--primary",
+      "name": "Primary",
+      "title": "Form/Button",
+      "importPath": "./src/stories/Button.stories.ts",
+      "componentPath": "@ignite-ui/react",
+      "tags": [
+        "dev",
+        "test"
+      ]
+    },
+    "form-button--big": {
+      "type": "story",
+      "id": "form-button--big",
+      "name": "Big",
+      "title": "Form/Button",
+      "importPath": "./src/stories/Button.stories.ts",
+      "componentPath": "@ignite-ui/react",
+      "tags": [
+        "dev",
+        "test"
+      ]
+    }
+  }
+}

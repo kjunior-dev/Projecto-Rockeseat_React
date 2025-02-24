@@ -49,7 +49,6 @@ var index_exports = {};
 __export(index_exports, {
   Avatar: () => Avatar2,
   Box: () => Box,
-  Button: () => Button,
   Heading: () => Heading,
   Text: () => Text
 });
@@ -253,14 +252,10 @@ var import_phosphor_react = require("phosphor-react");
 function Avatar2(props) {
   return /* @__PURE__ */ import_react2.default.createElement(AvatarContainer, null, /* @__PURE__ */ import_react2.default.createElement(AvatarImage, __spreadValues({}, props)), /* @__PURE__ */ import_react2.default.createElement(AvatarFallback, { delayMs: 600 }, /* @__PURE__ */ import_react2.default.createElement(import_phosphor_react.User, null)));
 }
-
-// src/components/Button.tsx
-var Button = styled("button", {});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
   Box,
-  Button,
   Heading,
   Text
 });

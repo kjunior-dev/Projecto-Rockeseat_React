@@ -180,7 +180,7 @@ var Heading = styled("h2", {
 });
 
 // src/components/Avatar/index.tsx
-import React2 from "react";
+import React from "react";
 
 // src/components/Avatar/styles.ts
 import { Avatar } from "@radix-ui/react-avatar";
@@ -214,15 +214,11 @@ var AvatarFallback = styled(Avatar.Fallback, {
 // src/components/Avatar/index.tsx
 import { User } from "phosphor-react";
 function Avatar2(props) {
-  return /* @__PURE__ */ React2.createElement(AvatarContainer, null, /* @__PURE__ */ React2.createElement(AvatarImage, __spreadValues({}, props)), /* @__PURE__ */ React2.createElement(AvatarFallback, { delayMs: 600 }, /* @__PURE__ */ React2.createElement(User, null)));
+  return /* @__PURE__ */ React.createElement(AvatarContainer, null, /* @__PURE__ */ React.createElement(AvatarImage, __spreadValues({}, props)), /* @__PURE__ */ React.createElement(AvatarFallback, { delayMs: 600 }, /* @__PURE__ */ React.createElement(User, null)));
 }
-
-// src/components/Button.tsx
-var Button = styled("button", {});
 export {
   Avatar2 as Avatar,
   Box,
-  Button,
   Heading,
   Text
 };
