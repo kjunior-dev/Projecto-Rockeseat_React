@@ -10,24 +10,27 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Importante para monorepos
+          fetch-depth: 0  # Fundamental para monorepos
 
-      - name: Use Node.js 16
+      - name: Setup Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'npm'
+          cache-dependency-path: 'packages/docs/package-lock.json'
 
       - name: Install dependencies
-        run: npm install  # Mude de 'npm ci' para 'npm install'
+        run: npm ci
+        working-directory: packages/docs
 
       - name: Build Storybook
         run: npm run build
+        working-directory: packages/docs
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         working-directory: packages/docs
         run: |
           npm install -g gh-pages
-          npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
+          gh-pages --dist storybook-static --dotfiles
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
