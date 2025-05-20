@@ -1,29 +1,33 @@
-name: Deploy docs
+name: Deploy Storybook
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-    build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Importante para monorepos
 
-      - name: Setup Node.js
-      - uses: actions/setup-node@v3
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: 'npm'
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm install  # Mude de 'npm ci' para 'npm install'
 
-      - run: npm run build
+      - name: Build Storybook
+        run: npm run build
 
-      - name: Deploy storybook
+      - name: Deploy
         working-directory: packages/docs
-        run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-storybook-static
+        run: |
+          npm install -g gh-pages
+          npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
-
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
