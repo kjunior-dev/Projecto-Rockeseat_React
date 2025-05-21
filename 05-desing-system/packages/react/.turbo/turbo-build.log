@@ -1,0 +1,48 @@
+
+
+> react@1.0.0 build
+> tsup src/index.tsx --format esm,cjs --dts --external react
+
+[1G[0K[34mCLI[39m Building entry: src/index.tsx
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.5.0
+[34mCLI[39m Target: es6
+[34mESM[39m Build start
+[34mCJS[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m10.54 KB[39m
+[32mESM[39m ⚡️ Build success in 52ms
+[32mCJS[39m [1mdist/index.js [22m[32m12.17 KB[39m
+[32mCJS[39m ⚡️ Build success in 53ms
+DTS Build start
+Error: ImportEquals should have a literal source.
+
+  2 | import * as _stitches_react_types_css_util from "@stitches/react/types/css-util";
+  3 | import { ComponentProps } from "@stitches/react";
+> 4 | import ElementType = React.JSX.ElementType;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | declare const Button: _stitches_react_types_styled_component.StyledComponent<"button", {
+  6 |     variant?: "primary" | "secundary" | "tertiary" | undefined;
+  7 | }, {}, _stitches_react_types_css_util.CSS<{}, {
+    at Transformer.convertImportDeclaration (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/rollup.js:5997:19)
+    at Transformer.convertStatement (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/rollup.js:5897:23)
+    at new Transformer (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/rollup.js:5836:16)
+    at convert (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/rollup.js:5827:27)
+    at Object.transform (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/rollup.js:6227:29)
+    at treatTsAsDts (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/rollup.js:6352:48)
+    at Object.transform (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/rollup.js:6383:35)
+    at /Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/rollup/dist/shared/rollup.js:3361:40
+[31mError: error occurred in dts build
+    at Worker.<anonymous> (/Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/node_modules/tsup/dist/index.js:1545:26)
+    at Worker.emit (node:events:518:28)
+    at MessagePort.<anonymous> (node:internal/worker:268:53)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:827:20)
+    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)[39m
+DTS Build error
+[1G[0K\[1G[0K[1mnpm[22m [31merror[39m Lifecycle script `build` failed with error:
+[1G[0K\[1G[0K[1mnpm[22m [31merror[39m [94mcode[39m [33m1[39m
+[1G[0K\[1G[0K[1mnpm[22m [31merror[39m [94mpath[39m /Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/packages/react
+[1G[0K\[1G[0K[1mnpm[22m [31merror[39m [94mworkspace[39m react@1.0.0
+[1G[0K\[1G[0K[1mnpm[22m [31merror[39m [94mlocation[39m /Users/macbook/IdeaProjects/Curso Rockeseat/Projecto-Rockeseat_React/05-desing-system/packages/react
+[1G[0K\[1G[0K[1mnpm[22m [31merror[39m command failed
+[1G[0K\[1G[0K[1mnpm[22m [31merror[39m [94mcommand[39m sh -c tsup src/index.tsx --format esm,cjs --dts --external react
+[1G[0K\[1G[0K
