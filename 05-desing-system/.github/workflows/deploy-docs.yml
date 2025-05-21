@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: '16'  # <- Corrigido para versão válida
           cache: 'npm'
-          cache-dependency-path: packages/docs/package-lock.json
 
       - name: Install dependencies
         working-directory: packages/docs
