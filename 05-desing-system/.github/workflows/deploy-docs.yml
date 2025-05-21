@@ -16,20 +16,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.15.19'
+          node-version: '16'  # <- Corrigido para versão válida
           cache: 'npm'
           cache-dependency-path: packages/docs/package-lock.json
 
       - name: Install dependencies
-        working-directory: ./packages/docs
+        working-directory: packages/docs
         run: npm ci
 
       - name: Build docs
-        working-directory: ./packages/docs
+        working-directory: packages/docs
         run: npm run build
 
       - name: Deploy Storybook
-        working-directory: ./packages/docs
+        working-directory: packages/docs
         run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
